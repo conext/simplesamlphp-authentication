@@ -238,7 +238,7 @@ if (!class_exists('SimpleSAMLAuthentication')) {
 
 function simplesaml_authentication_add_options_page() {
 	if (function_exists('add_options_page')) {
-		add_options_page('simpleSAMLphp Authentication', 'simpleSAMLphp Authentication', 8,
+		add_options_page('simpleSAMLphp Authentication', 'simpleSAMLphp Authentication', 'manage_network',
 			basename(__FILE__), 'simplesaml_authentication_options_page');
 	}
 }
