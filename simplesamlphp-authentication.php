@@ -27,7 +27,33 @@ Author URI: http://www.cs.tcd.ie/David.OCallaghan/
 
 add_action('admin_menu', 'simplesaml_authentication_add_options_page');
 
+/*
+ * if the plugin is to work in a MU environment, we
+ * need to specify default option values
+ * ... so we hook into init
+ */
+add_action('init', 'set_saml_options');
+
+function set_saml_options() {
+    $optionarray_update = array (
+        'new_user' => '1',
+        'slo' => '1',
+        'include_path' => '/home/maligree/public_html/simplesamlphp',
+        'sp_auth' => NULL,
+        'username_attribute' => NULL,
+        'firstname_attribute' => NULL,
+        'lastname_attribute' => NULL,
+        'email_attribute' => NULL,
+        'admin_entitlement' => NULL,
+    );
+
+    update_option('simplesaml_authentication_options', $optionarray_update);
+}
+
+/* end of hook */
+
 $simplesaml_authentication_opt = get_option('simplesaml_authentication_options');
+//var_dump($simplesaml_authentication_opt);
 
 $simplesaml_configured = true;
 
@@ -67,7 +93,7 @@ if ($slo) {
 		global $as;
 
 		$user = wp_get_current_user();
-		if ( $user->id > 0 ) {
+		if ( $user->ID > 0 ) {
 			// User is local authenticated but SP session was closed
 			if (!isset($as)) {
 				global $simplesaml_authentication_opt;
