@@ -38,7 +38,7 @@ function set_saml_options() {
     $optionarray_update = array (
         'new_user' => '1',
         'slo' => '1',
-        'include_path' => '/home/maligree/public_html/simplesamlphp',
+        'include_path' => '/var/www/wp/simplesamlphp',
         'sp_auth' => NULL,
         'username_attribute' => NULL,
         'firstname_attribute' => NULL,
