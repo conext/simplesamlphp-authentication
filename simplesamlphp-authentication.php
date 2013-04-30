@@ -173,6 +173,7 @@ if (!class_exists('SimpleSAMLAuthentication')) {
 			
 			if ($user) {
 				// user already exists
+                error_log("OOOOOO " . get_current_user_id());
 				return true;
 			} else {
 				// First time logging in
@@ -200,6 +201,10 @@ if (!class_exists('SimpleSAMLAuthentication')) {
 					$user_info['user_login'] = $username;
 					$user_info['user_pass'] = $password;
 					$user_info['user_email'] = $user_email;
+                    /* hack. no one uses aim, right? */
+                    $user_info['aim'] = $attributes['urn:oid:1.3.6.1.4.1.1076.20.40.40.1'][0];
+
+                    error_log("Setting AIM to full uid: " . $user_info['aim']);
 					
 					if(empty($simplesaml_authentication_opt['firstname_attribute'])) {
 						$user_info['first_name'] = $attributes['givenName'][0];
@@ -235,6 +240,7 @@ if (!class_exists('SimpleSAMLAuthentication')) {
 					exit();
 				}
 			}
+            error_log("OOOOO " . get_current_user_id());
 		}
 
 
