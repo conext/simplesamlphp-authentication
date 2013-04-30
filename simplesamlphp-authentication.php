@@ -173,7 +173,6 @@ if (!class_exists('SimpleSAMLAuthentication')) {
 			
 			if ($user) {
 				// user already exists
-                error_log("OOOOOO " . get_current_user_id());
 				return true;
 			} else {
 				// First time logging in
@@ -240,7 +239,6 @@ if (!class_exists('SimpleSAMLAuthentication')) {
 					exit();
 				}
 			}
-            error_log("OOOOO " . get_current_user_id());
 		}
 
 
