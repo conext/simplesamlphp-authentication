@@ -24,6 +24,8 @@ Author URI: http://www.cs.tcd.ie/David.OCallaghan/
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA */
 
+define('SIMPLESAMLPHP_INCLUDE_PATH', '/var/www/wp/simplesamlphp');
+
 
 add_action('admin_menu', 'simplesaml_authentication_add_options_page');
 
@@ -38,7 +40,7 @@ function set_saml_options() {
     $optionarray_update = array (
         'new_user' => '1',
         'slo' => '1',
-        'include_path' => '/var/www/wp/simplesamlphp',
+        'include_path' => SIMPLESAMLPHP_INCLUDE_PATH,
         'sp_auth' => NULL,
         'username_attribute' => NULL,
         'firstname_attribute' => NULL,
